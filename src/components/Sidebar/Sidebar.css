@@ -1,0 +1,27 @@
+.sidebar {
+    background: red;
+    height: 100vh;
+    width : 20rem;
+    position: fixed;
+}
+
+.sidebar__top {
+    height: 14rem;
+}
+
+.sidebar__list {
+    background: green;
+    
+}
+
+.sidebar__list__item {
+    height: 5rem;
+    background: salmon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+
+
+

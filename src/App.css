@@ -1,22 +1,23 @@
-.App {
-  text-align: center;
+:root {
+  /* COLOR */ 
+  --color-white : #fff;
+  --color-primary: #d85803;
+  --color-dark: #1a1a1a;
+  --color-dark-light: #313131;
+  --color-secondary: #04776e;
+  --color-grey: #989084;
 }
 
-.App-logo {
-  height: 40vmin;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
 }
 
-.App-link {
-  color: #09d3ac;
-}

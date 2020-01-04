@@ -1,26 +1,93 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import Sidebar from './components/Sidebar/Sidebar';
 import './App.css';
+import Home from './pages/home/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    activeSection: 'me',
+    sectionsPos: null, 
+    lastPos: 0
+  }
+
+  
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.listenToScroll)
+  }
+
+  listenToScroll = () => {
+
+    const {sectionsPos, lastPos} = this.state;
+    let scrollPos = window.pageYOffset; 
+
+    let scrollDirection = '';
+
+    if( scrollPos > lastPos){
+      scrollDirection = 'bottom'
+    } else {
+      scrollDirection = 'top'
+    }
+
+    const sectionName = Object.keys(sectionsPos);
+
+   sectionName.forEach( section => {
+
+      if(scrollDirection === 'bottom'){
+        if(scrollPos >= sectionsPos[section].min  && scrollPos <= sectionsPos[section].max){
+          this.setState({
+            lastPos: scrollPos,
+            activeSection: section
+          }, () => console.log(this.state.activeSection))
+        } 
+        else {
+          this.setState({
+            lastPos: scrollPos
+          })
+        }
+      }
+
+      if(scrollDirection === 'top' &&  (this.state.lastPos - scrollPos) > 200 ){
+        let previousSection;   
+        let activeSectionIndex = sectionName.findIndex( el => el === this.state.activeSection);
+        if(activeSectionIndex !== 0){
+          previousSection = sectionName[activeSectionIndex - 1]
+        } else {
+          previousSection = sectionName[0]
+        }
+        let previousSectionTrigger = sectionsPos[previousSection].min + ( (sectionsPos[previousSection].max - sectionsPos[previousSection].min) / 2 )
+  
+        if(scrollPos <= previousSectionTrigger )  {
+          this.setState({
+            lastPos: scrollPos,
+            activeSection: previousSection
+          }, () => console.log(this.state.activeSection))
+        } else {
+          this.setState({
+            lastPos: scrollPos
+          })
+        }
+      }
+      
+    })
+
+    
+  }
+
+  setSectionsPos = data => {
+    this.setState( {sectionsPos : data }, () => window.addEventListener('scroll', this.listenToScroll)  )
+  }
+
+  render() {
+
+    return (
+      <div className="App">
+        <Sidebar />
+        <Home setSectionsPos = {this.setSectionsPos}/>
+      </div>
+    )
+  }
 }
+
 
 export default App;
