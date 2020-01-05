@@ -1,27 +1,99 @@
 .sidebar {
-    background: red;
     height: 100vh;
-    width : 20rem;
+    width : 23rem;
     position: fixed;
 }
 
-.sidebar__top {
-    height: 14rem;
+.sidebar__head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sidebar__head__imgContainer {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar__head__img {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/img/profile.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.sidebar__head__activeCircle {
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: green;
+    position: absolute;
+    bottom: 1rem;
+    right: 0rem;
+    border: 2.3px solid var(--color-white);
+}
+
+
+.sidebar__head__name {
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar__head__title {
+    font-family: var(--font-primary);
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
 }
 
 .sidebar__list {
-    background: green;
     
 }
 
 .sidebar__list__item {
-    height: 5rem;
-    background: salmon;
+    height: 4rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: .5rem;
+    padding-left: 3rem;
+    position: relative;
 }
 
+.sidebar__list__item svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-primary);
+    margin-right: 2rem;
+}
+
+.sidebar__list__item span {
+    font-family: var(--font-primary);
+    font-size: 1.2rem;
+    color: var(--color-primary);
+}
+
+.sidebar__list__item.active {
+    background: var(--color-grey);
+}
+
+.sidebar__list__item.active svg {
+    fill: var(--color-white);
+}
+
+.sidebar__list__item.active::before {
+    content: '';
+    position: absolute;
+    width: .5rem;
+    height: 100%;
+    background: var(--color-primary);
+    left: 0;
+}
 
 

@@ -6,7 +6,7 @@ import Home from './pages/home/Home';
 class App extends Component {
 
   state = {
-    activeSection: 'me',
+    activeSection: 'home',
     sectionsPos: null, 
     lastPos: 0
   }
@@ -82,7 +82,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Sidebar />
+        <Sidebar activeSection={this.state.activeSection}/>
         <Home setSectionsPos = {this.setSectionsPos}/>
       </div>
     )

@@ -8,7 +8,8 @@ class Home extends Component {
         let sectionsPos = {};
 
         let positionsData = {
-            me : this.me.offsetTop,
+            home : this.home.offsetTop,
+            about : this.about.offsetTop,
             portfolio: this.portfolio.offsetTop,
             skills: this.skills.offsetTop,
             contact: this.contact.offsetTop
@@ -34,8 +35,12 @@ class Home extends Component {
             return (
                 <div className="home">            
                     <section className="home__section"
-                            ref={ el => this.me = el}>
-                        Me
+                            ref={ el => this.home = el}>
+                        Home
+                    </section>
+                    <section className="home__section"
+                            ref={ el => this.about = el}>
+                        About
                     </section>
                     <section className="home__section home__section--red"
                             ref={ el => this.portfolio = el}>
