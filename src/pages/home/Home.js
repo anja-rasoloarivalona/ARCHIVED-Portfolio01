@@ -36,7 +36,19 @@ class Home extends Component {
                 <div className="home">            
                     <section className="home__section"
                             ref={ el => this.home = el}>
-                        Home
+                        
+                        <h4 className="home__section__subtitle">
+                            Hello, my name is Anja Rasoloarivalona
+                        </h4>
+                        <h1 className="home__section__title">
+                            I'm a developer
+                        </h1>
+                        <p className="hone__section__para">
+                            I am passionate about creating elegant, unique and functional websites and applications. If you have something in mind, feel free to contact me! In the meantime, enjoy your little ride in my portfolio.
+                        </p>
+                        <div className="home__section__cta">
+                            
+                        </div>
                     </section>
                     <section className="home__section"
                             ref={ el => this.about = el}>
