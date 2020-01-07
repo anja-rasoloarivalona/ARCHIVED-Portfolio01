@@ -5,7 +5,8 @@ import Button from '../../components/Button/Button';
 class Home extends Component {
 
     state = {
-        triggerAnimation1: false
+        triggerAnimation1: false,
+        triggerAnimation2: false
     }
 
     componentDidMount(){
@@ -38,13 +39,19 @@ class Home extends Component {
     animationHandler = () => {
         setTimeout(
             () => {
-                this.setState({triggerAnimation1: true}, () => console.log('aima'))
+                this.setState({triggerAnimation1: true})
             }, 3000
+        )
+
+        setTimeout(
+            () => {
+                this.setState({triggerAnimation1: false, triggerAnimation2: true})
+            }, 6000
         )
     }
 
     render() {
-        const {triggerAnimation1} = this.state
+        const {triggerAnimation1, triggerAnimation2} = this.state
             return (
                 <div className="home">            
                     <section className="home__section"
@@ -54,7 +61,8 @@ class Home extends Component {
                             Hello, my name is Anja Rasoloarivalona
                         </div>
                         <div className={`home__section__title 
-                                        ${triggerAnimation1 === true ? 'anim1': ''}`}>
+                                        ${triggerAnimation1  ? 'anim1': ''}
+                                        ${triggerAnimation2  ? 'anim2': ''}`}>
                             
                             
                             <div className="home__section__title__container">
